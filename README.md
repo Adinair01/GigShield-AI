@@ -11,8 +11,8 @@
 [![Status](https://img.shields.io/badge/Status-Active_Development-brightgreen)](.)
 [![Stack](https://img.shields.io/badge/Stack-Node.js_%7C_React_%7C_FastAPI_%7C_MongoDB-blue)](.)
 
-[![Figma Mockups](https://img.shields.io/badge/Figma-View_UI_Mockups-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://your-figma-link-here)
-[![Video](https://img.shields.io/badge/YouTube-Watch_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://your-youtube-link-here)
+[![Figma Mockups](https://img.shields.io/badge/Figma-View_UI_Mockups-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/make/8Ta29yUCELZIH7RIHZlKA5/GigShield-AI-UI-Design?p=f&t=wfJk3Q4EGmUzAU7b-0&fullscreen=1)
+[![Video](https://img.shields.io/badge/YouTube-Watch_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/mUygqU4H2_w)
 
 > **GigShield AI** is a zero-touch parametric income protection platform built for India's 15M+ gig workers, engineered from the ground up to survive coordinated fraud rings, GPS spoofing, and mass claim attacks without ever missing a legitimate payout.
 
@@ -508,8 +508,8 @@ gigshield-ai/
 
 | Deliverable | Link |
 |---|---|
-| Demo Video (2 min) | [![YouTube](https://img.shields.io/badge/YouTube-Watch_Demo-FF0000?style=flat&logo=youtube&logoColor=white)](https://your-youtube-link-here) |
-| Figma UI Mockups | [![Figma](https://img.shields.io/badge/Figma-View_Mockups-F24E1E?style=flat&logo=figma&logoColor=white)](https://your-figma-link-here) |
+| Demo Video (2 min) | [![YouTube](https://img.shields.io/badge/YouTube-Watch_Demo-FF0000?style=flat&logo=youtube&logoColor=white)](https://youtu.be/mUygqU4H2_w) |
+| Figma UI Mockups | [![Figma](https://img.shields.io/badge/Figma-View_Mockups-F24E1E?style=flat&logo=figma&logoColor=white)](https://www.figma.com/make/8Ta29yUCELZIH7RIHZlKA5/GigShield-AI-UI-Design?p=f&t=wfJk3Q4EGmUzAU7b-0&fullscreen=1) |
 | GitHub Repository | [![GitHub](https://img.shields.io/badge/GitHub-Adinair01/GigShield--AI-181717?style=flat&logo=github)](https://github.com/Adinair01) |
 
 ---
