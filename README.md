@@ -1,8 +1,8 @@
-# ⚡ GigShield AI: Parametric Income Protection for India's Gig Workers
+# ⚡ EarnShield AI: Zero-Touch Income Protection for India's Gig Workers
 
-**Guidewire DEVTrails 2026 - Phase 1 Submission**
+**Guidewire DEVTrails 2026 - Phase 2 Submission**
 
-**Theme:** Ideate and Know Your Delivery Worker · **Round:** Market Crash Crisis Response
+**Theme:** Ideate and Know Your Delivery Worker · **Round:** Scale & Differentiation
 
 **Team:** CODEpreneurs · Aditya Nair · Soumya Snehal · Animesh Gupta · Apurva Singh
 
@@ -11,10 +11,10 @@
 [![Status](https://img.shields.io/badge/Status-Active_Development-brightgreen)](.)
 [![Stack](https://img.shields.io/badge/Stack-Node.js_%7C_React_%7C_FastAPI_%7C_MongoDB-blue)](.)
 
-[![Figma Mockups](https://img.shields.io/badge/Figma-View_UI_Mockups-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/make/8Ta29yUCELZIH7RIHZlKA5/GigShield-AI-UI-Design?p=f&t=wfJk3Q4EGmUzAU7b-0&fullscreen=1)
-[![Video](https://img.shields.io/badge/YouTube-Watch_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/mUygqU4H2_w)
+[![Video](https://img.shields.io/badge/YouTube-Watch_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/ZvD15aYqd_8)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Site-00C853?style=for-the-badge&logo=netlify&logoColor=white)](https://earnsureai.netlify.app/)
 
-> **GigShield AI** is a zero-touch parametric income protection platform built for India's 15M+ gig workers, engineered from the ground up to survive coordinated fraud rings, GPS spoofing, and mass claim attacks without ever missing a legitimate payout.
+> **EarnShield AI** is a zero-touch parametric income protection platform built for India's gig workers — designed not just to automate payouts, but to intelligently decide *when to trust, when to verify, and when to stop fraud at scale*.
 
 ---
 
@@ -29,7 +29,7 @@
 7. [System Architecture](#7--system-architecture)
 8. [Adversarial Defense and Anti-Fraud Engine](#8--adversarial-defense-and-anti-fraud-engine)
 9. [User Experience Flow](#9--user-experience-flow)
-10. [Why GigShield Stands Apart](#10--why-gigshield-stands-apart)
+10. [Why EarnShield Stands Apart](#10--why-earnshield-stands-apart)
 11. [Tech Stack](#11--tech-stack)
 12. [Repository Structure](#12--repository-structure)
 13. [Phase 1 Scope](#13--phase-1-scope)
@@ -55,7 +55,7 @@
 
 ## 2. 💡 The Solution
 
-GigShield AI introduces a **zero-touch parametric insurance model** built specifically for the gig economy.
+EarnShield AI introduces a **zero-touch parametric insurance model** built specifically for the gig economy.
 
 ```
 Monitor real-world conditions
@@ -69,7 +69,7 @@ Pay out instantly — no forms, no adjusters, no waiting
 
 If the disruption is objectively real, the payout is automatic. Unlike traditional insurance which pays based on what you *claim*, parametric insurance pays based on what *actually happened*, verified by independent real-world data sources.
 
-| Traditional Insurance | GigShield AI |
+| Traditional Insurance | Earn Shield AI |
 |---|---|
 | Manual claim submission | Zero-touch automated trigger |
 | Days to weeks for payout | Instant disbursement |
@@ -78,6 +78,21 @@ If the disruption is objectively real, the payout is automatic. Unlike tradition
 | Binary: covered or not | Risk-scored, tiered payout routing |
 
 ---
+---
+
+## 🧩 What Changed in Phase 2
+
+Phase 1 was about proving the idea.  
+Phase 2 is about proving the system can **survive in the real world.**
+
+We focused on three things:
+
+- **Originality over templates** → redesigned system identity and flow
+- **Decision intelligence** → not just triggering payouts, but deciding trust in real-time
+- **Fraud-first architecture** → built assuming attacks will happen, not as an afterthought
+
+This is no longer just a parametric insurance demo.  
+It is a **decision system for automated trust and payouts under uncertainty.**
 
 ## 3. 🚴 Persona Scenario — Meet Ravi
 
@@ -88,17 +103,18 @@ If the disruption is objectively real, the payout is automatic. Unlike tradition
 | **Onboarding** | Ravi signs up, selects his zone, and picks a weekly plan. AI profiles his zone's historical risk. |
 | **Coverage** | His premium is set at Rs. 35 for the week, dynamically calculated from the 7-day forecast. |
 | **Disruption** | Tuesday 3pm: rainfall in Bengaluru South exceeds 15mm/hr. Roads start flooding. Ravi cannot ride. |
-| **System Action** | GigShield detects the trigger via weather + traffic APIs, ML scores the risk, fraud check passes, eligibility confirmed. |
+| **System Action** | EarnShield detects the trigger via weather + traffic APIs, ML scores the risk, fraud check passes, eligibility confirmed. |
 | **Outcome** | Claim auto-triggered. Rs. 200 payout initiated. No form filled. No call made. No adjuster involved. |
 
-> Ravi's phone buzzes: *"Rain disruption confirmed in your zone. Rs. 200 has been credited for 2 lost hours."*
+> Ravi's phone buzzes: *"Rain disruption confirmed. ₹200 credited automatically."*  
+> No claim. No delay. No human involved.
 > He never filed anything. The system did it for him.
 
 ---
 
 ## 4. 💰 Financial Architecture and Workflow
 
-GigShield operates on a **weekly micro-premium model** designed around how gig workers actually earn and spend. Annual or monthly premiums are financially unviable for this demographic. Weekly premiums align with their payout cycles.
+EarnShield operates on a **weekly micro-premium model** designed around how gig workers actually earn and spend. Annual or monthly premiums are financially unviable for this demographic. Weekly premiums align with their payout cycles.
 
 | Parameter | Detail |
 |---|---|
@@ -152,7 +168,7 @@ flowchart TD
 
 ## 5. ⚡ Parametric Triggers
 
-GigShield uses **multi-API consensus** so no single data source can fire a payout on its own. Every trigger needs at least two independent signals to agree before the system acts.
+EarnShield uses **multi-API consensus** so no single data source can fire a payout on its own. Every trigger needs at least two independent signals to agree before the system acts.
 
 | # | Trigger Type | Condition | Sources Required |
 |---|---|---|---|
@@ -165,9 +181,9 @@ A single compromised or faulty API cannot cause fraudulent mass payouts. This is
 
 ---
 
-## 6. 🧠 AI and Machine Learning Layer
+## 6. 🧠 Decision Intelligence Layer (Risk + Fraud + Trust)
 
-GigShield's ML intelligence runs as a **fully independent FastAPI microservice**, completely decoupled from the backend, independently scalable, and swappable without touching core business logic.
+EarnShield's ML intelligence runs as a **fully independent FastAPI microservice**, completely decoupled from the backend, independently scalable, and swappable without touching core business logic.
 
 ### Risk Scoring
 
@@ -182,6 +198,8 @@ Answers the question: *"How likely is it that a real disruption is affecting thi
 
 Answers the question: *"Does this claim look like it came from a real stranded worker, or is it synthetic?"*
 
+> Most systems assume users are honest until proven otherwise.  
+> EarnShield assumes the system will be attacked — and is designed to stay stable even then.
 **Algorithm:** IsolationForest (unsupervised anomaly detection)
 **Inputs:** Claim metadata, GPS location, claim timing, device fingerprint, behavioral signals
 **Output:** Anomaly score that flags claims deviating from legitimate patterns
@@ -193,7 +211,7 @@ IsolationForest is specifically chosen because fraud patterns in parametric insu
 
 ## 7. 🏗️ System Architecture
 
-GigShield is a **four-service microservice architecture** fully orchestrated via Docker Compose. Every service is independently containerised, communicates over a shared internal network, and can be scaled independently.
+EarnShield is a **four-service microservice architecture** fully orchestrated via Docker Compose. Every service is independently containerised, communicates over a shared internal network, and can be scaled independently.
 
 ### Diagram 2 — Microservices Architecture
 
@@ -253,7 +271,7 @@ flowchart TB
 
 ## 8. 🚨 Adversarial Defense and Anti-Fraud Engine
 
-> **The Market Crash Scenario:** 500 delivery partners. Fake GPS. Real payouts. A coordinated fraud ring just drained a platform's liquidity pool. Simple GPS distance checks are dead. How does GigShield fight back?
+> **The Market Crash Scenario:** 500 delivery partners. Fake GPS. Real payouts. A coordinated fraud ring just drained a platform's liquidity pool. Simple GPS distance checks are dead. How does EarnShield fight back?
 
 ### The Threat Model
 
@@ -372,7 +390,7 @@ RESULT:    180 fraud claims blocked
 
 ## 9. 🎨 User Experience Flow
 
-GigShield is built for workers who are not tech-savvy. The entire worker flow is designed to be understood in under 30 seconds.
+EarnShield is built for workers who are not tech-savvy. The entire worker flow is designed to be understood in under 30 seconds.
 
 ### Worker Flow
 
@@ -392,15 +410,15 @@ Admins get a real-time dashboard with portfolio metrics, zone-level risk heatmap
 
 ---
 
-## 10. 🏆 Why GigShield Stands Apart
+## 10. 🏆 Why Earn Shield Stands Apart
 
-> What happens when 200 delivery partners lose 4 hours of income due to a sudden rainstorm?
+> What happens when 200 delivery partners lose income — and 50 fake claims try to exploit the same event?
 > **Today:** They earn nothing and have no recourse.
-> **With GigShield:** They get paid automatically, without filing a single claim.
+> **With EarnShield:** They get paid automatically, without filing a single claim.
 
-Most hackathon solutions for gig worker protection stop at the idea level. GigShield is already a functional system prototype.
+Most hackathon solutions for gig worker protection stop at the idea level. EarnShield is already a functional system prototype.
 
-| What Others Do | What GigShield Does |
+| What Others Do | What EarnShield Does |
 |---|---|
 | Describe a concept | Ship a working four-service architecture |
 | Assume fraud is simple | Build a seven-layer adversarial defense system |
@@ -436,7 +454,7 @@ Most hackathon solutions for gig worker protection stop at the idea level. GigSh
 ## 12. 📁 Repository Structure
 
 ```
-gigshield-ai/
+earnshield-ai/
 │
 ├── backend/                           # Node.js + Express API
 │   ├── controllers/
@@ -476,9 +494,9 @@ gigshield-ai/
 
 ---
 
-## 13. 📋 Phase 1 Scope
+## 13. 📋 Project Scope
 
-### What We Built
+### Phase 1 — What We Built
 
 - [x] Backend MVC architecture — Node.js + Express
 - [x] Worker API: `/me` · `/claims` · `/risk-score`
@@ -493,24 +511,32 @@ gigshield-ai/
 - [x] Docker + docker-compose multi-service orchestration
 - [x] Seven-layer adversarial defense architecture — design and foundation
 
-### What is Next (Phase 2)
+### Phase 2 — What We Added (Current Submission)
 
-- [ ] Live OpenWeather / CPCB AQI API integration
-- [ ] Real-time auto-trigger engine with continuous polling
-- [ ] Razorpay sandbox for simulated UPI instant payouts
-- [ ] Graph ML fraud ring detection at production scale
-- [ ] Reputation scoring for verified long-term users
-- [ ] Cloud deployment on AWS or GCP
+- [x] Live OpenWeather / CPCB AQI API integration
+- [x] Real-time auto-trigger engine with continuous polling
+- [x] Razorpay sandbox for simulated UPI instant payouts
+- [x] Graph ML fraud ring detection at production scale
+- [x] Reputation scoring for verified long-term users
+- [x] Cloud deployment on AWS or GCP
+
+### What is Next
+
+- [ ] Production-grade cloud scaling and load testing
+- [ ] Multi-language support for regional gig workers
+- [ ] Partner API integrations with Swiggy, Zomato, and Blinkit
+- [ ] Regulatory compliance and IRDAI sandbox onboarding
+- [ ] Mobile-native app (React Native / Flutter)
 
 ---
 
-## Phase 1 Deliverables
+## Deliverables
 
 | Deliverable | Link |
 |---|---|
-| Demo Video (2 min) | [![YouTube](https://img.shields.io/badge/YouTube-Watch_Demo-FF0000?style=flat&logo=youtube&logoColor=white)](https://youtu.be/mUygqU4H2_w) |
-| Figma UI Mockups | [![Figma](https://img.shields.io/badge/Figma-View_Mockups-F24E1E?style=flat&logo=figma&logoColor=white)](https://www.figma.com/make/8Ta29yUCELZIH7RIHZlKA5/GigShield-AI-UI-Design?p=f&t=wfJk3Q4EGmUzAU7b-0&fullscreen=1) |
-| GitHub Repository | [![GitHub](https://img.shields.io/badge/GitHub-Adinair01/GigShield--AI-181717?style=flat&logo=github)](https://github.com/Adinair01) |
+| Demo Video (2 min) | [![YouTube](https://img.shields.io/badge/YouTube-Watch_Demo-FF0000?style=flat&logo=youtube&logoColor=white)](https://youtu.be/ZvD15aYqd_8) |
+| Live Demo | [![Netlify](https://img.shields.io/badge/Live_Demo-Visit_Site-00C853?style=flat&logo=netlify&logoColor=white)](https://earnsureai.netlify.app/) |
+| GitHub Repository | [![GitHub](https://img.shields.io/badge/GitHub-Adinair01/EarnShield--AI-181717?style=flat&logo=github)](https://github.com/Adinair01) |
 
 ---
 
@@ -518,11 +544,12 @@ gigshield-ai/
 
 ## 🚀 Vision
 
-GigShield AI is building a real-time, transparent, and resilient income protection system for the workers who power India's urban economy.
+EarnShield AI is building a real-time, transparent, and resilient income protection system for the workers who power India's urban economy.
 
-> *"From unpredictable streets to predictable income."*
+> *"Make income predictable, even when the world is not."*
 
 ---
+| Decision Layer | Custom Rule Engine | Risk + Fraud + Behavioral signal fusion |
 
 Built by **Aditya Nair · Soumya Snehal · Animesh Gupta · Apurva Singh**
 Team CODEpreneurs · Guidewire DEVTrails 2026
