@@ -1,7 +1,7 @@
 {
-  "name": "gigshield-backend",
+  "name": "earnshield-ai-backend",
   "version": "1.0.0",
-  "description": "GigShield AI backend - parametric insurance platform for gig workers",
+  "description": "Earn Shield AI backend - parametric insurance platform for gig workers",
   "main": "server.js",
   "type": "module",
   "scripts": {

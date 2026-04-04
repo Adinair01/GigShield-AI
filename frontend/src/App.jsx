@@ -1,83 +1,113 @@
 import React, { useState } from "react";
-import Dashboard from "./pages/Dashboard.jsx";
-import Register from "./pages/Register.jsx";
-import PolicySelection from "./pages/PolicySelection.jsx";
-import AdminDashboard from "./pages/AdminDashboard.jsx";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import AuthPage from "./pages/AuthPage";
+import WorkerDashboard from "./pages/WorkerDashboard";
+import PlanSelection from "./pages/PlanSelection";
+import AdminDashboard from "./pages/AdminDashboard";
 
-function App() {
-  const [token, setToken] = useState(null);
-  const [user, setUser] = useState(null);
-  const [view, setView] = useState("register"); // register | dashboard | admin
+function AppContent() {
+  const { user, loading, logout } = useAuth();
+  const [view, setView] = useState("dashboard");
 
-  const handleAuth = (data) => {
-    setToken(data.token);
-    setUser(data);
-    setView(data.role === "admin" ? "admin" : "dashboard");
-  };
+  if (loading) {
+    return (
+      <div className="loading-wrapper" style={{ minHeight: "100vh" }}>
+        <div className="spinner" />
+      </div>
+    );
+  }
 
-  const showPolicySelection = () => setView("policy");
+  if (!user) {
+    return (
+      <div className="app-shell">
+        <Navbar />
+        <AuthPage />
+      </div>
+    );
+  }
+
+  const isAdmin = user.role === "admin";
 
   const renderContent = () => {
-    if (!token) {
-      return <Register onAuthenticated={handleAuth} />;
-    }
-
-    if (view === "policy") {
+    if (isAdmin) return <AdminDashboard />;
+    if (view === "plans") {
       return (
-        <PolicySelection
-          token={token}
-          onBack={() => setView(user.role === "admin" ? "admin" : "dashboard")}
+        <PlanSelection
+          onPlanSelected={() => setView("dashboard")}
         />
       );
     }
-
-    if (view === "admin" && user?.role === "admin") {
-      return <AdminDashboard token={token} />;
-    }
-
-    return (
-      <Dashboard
-        token={token}
-        user={user}
-        onChoosePlan={showPolicySelection}
-      />
-    );
+    return <WorkerDashboard />;
   };
 
   return (
     <div className="app-shell">
-      <header className="app-header">
-        <div className="brand">
-          <span className="brand-logo">G</span>
+      <nav className="navbar">
+        <div className="nav-brand" onClick={() => setView("dashboard")}>
+          <img src="/logo.png" alt="Earn Shield AI" className="nav-logo-img" />
           <div>
-            <div className="brand-title">GigShield AI</div>
-            <div className="brand-subtitle">
-              Parametric cover for India&apos;s gig workers
-            </div>
+            <div className="nav-title">Earn Shield AI</div>
+            <div className="nav-subtitle">Parametric Insurance</div>
           </div>
         </div>
-        {user && (
-          <div className="header-right">
-            <span className="user-pill">
-              {user.name} · {user.platform}
+
+        <div className="nav-right">
+          {!isAdmin && (
+            <div className="nav-links">
+              <button
+                className={`nav-link ${view === "dashboard" ? "active" : ""}`}
+                onClick={() => setView("dashboard")}
+              >
+                Dashboard
+              </button>
+              <button
+                className={`nav-link ${view === "plans" ? "active" : ""}`}
+                onClick={() => setView("plans")}
+              >
+                Plans
+              </button>
+            </div>
+          )}
+
+          <div className="nav-user">
+            <div className="nav-user-avatar">
+              {user.name?.charAt(0).toUpperCase()}
+            </div>
+            <span>{user.name}</span>
+            <span style={{ color: "var(--text-muted)" }}>
+              · {isAdmin ? "Admin" : user.platform}
             </span>
-            <button
-              className="ghost-button"
-              onClick={() => {
-                setToken(null);
-                setUser(null);
-                setView("register");
-              }}
-            >
-              Logout
-            </button>
           </div>
-        )}
-      </header>
-      <main className="app-main">{renderContent()}</main>
+
+          <button className="btn btn-ghost btn-sm" onClick={logout}>
+            Logout
+          </button>
+        </div>
+      </nav>
+
+      <main className="main-content">{renderContent()}</main>
     </div>
   );
 }
 
-export default App;
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <div className="nav-brand">
+        <img src="/logo.png" alt="Earn Shield AI" className="nav-logo-img" />
+        <div>
+          <div className="nav-title">Earn Shield AI</div>
+          <div className="nav-subtitle">Parametric Insurance</div>
+        </div>
+      </div>
+    </nav>
+  );
+}
 
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
+}

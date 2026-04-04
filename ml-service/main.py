@@ -33,7 +33,7 @@ class FraudResponse(BaseModel):
     fraud_score: float
 
 
-app = FastAPI(title="GigShield ML Service", version="1.0.0")
+app = FastAPI(title="Earn Shield AI ML Service", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -46,7 +46,7 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {"message": "GigShield ML service up"}
+    return {"message": "Earn Shield AI ML service up"}
 
 
 @app.post("/risk-score", response_model=RiskResponse)

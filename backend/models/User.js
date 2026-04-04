@@ -7,12 +7,12 @@ const userSchema = new mongoose.Schema(
     passwordHash: { type: String, required: true },
     platform: {
       type: String,
-      enum: ["Swiggy", "Zomato", "Amazon"],
+      enum: ["Swiggy", "Zomato", "Amazon", "Flipkart", "Dunzo", "BigBasket"],
       required: true,
     },
     city: { type: String, required: true },
     zone: { type: String, required: true },
-    avg_daily_income: { type: Number, required: true },
+    avg_daily_income: { type: Number, default: 500 },
     risk_score: { type: Number, default: 0 },
     role: {
       type: String,
@@ -26,4 +26,3 @@ const userSchema = new mongoose.Schema(
 const User = mongoose.model("User", userSchema);
 
 export default User;
-

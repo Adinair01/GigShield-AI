@@ -24,6 +24,12 @@ export const getAnalytics = async (req, res, next) => {
       0
     );
 
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+    const claimsToday = await Claim.countDocuments({
+      timestamp: { $gte: todayStart },
+    });
+
     const premiums = await Policy.aggregate([
       { $match: { status: "active" } },
       {
@@ -37,6 +43,11 @@ export const getAnalytics = async (req, res, next) => {
     const totalPremiums = premiums[0]?.totalPremiums || 0;
     const lossRatio =
       totalPremiums > 0 ? Number((totalPayout / totalPremiums).toFixed(2)) : 0;
+
+    // Fraud alerts count
+    const fraudAlerts = await Claim.countDocuments({
+      $or: [{ status: "escrow" }, { status: "rejected" }],
+    });
 
     // Claims per city
     const claimsPerCityAgg = await Claim.aggregate([
@@ -62,7 +73,18 @@ export const getAnalytics = async (req, res, next) => {
       count: c.count,
     }));
 
-    // Weather disruption patterns (simple count per trigger type)
+    // Claims by trigger type
+    const claimsByTrigger = await Claim.aggregate([
+      {
+        $group: {
+          _id: "$trigger_type",
+          count: { $sum: 1 },
+          totalPayout: { $sum: "$payout_amount" },
+        },
+      },
+    ]);
+
+    // Weather disruption patterns
     const weatherAgg = await WeatherEvent.aggregate([
       {
         $group: {
@@ -77,18 +99,26 @@ export const getAnalytics = async (req, res, next) => {
       events: w.events,
     }));
 
+    // Recent events
+    const recentEvents = await WeatherEvent.find()
+      .sort({ timestamp: -1 })
+      .limit(10);
+
     res.json({
       totalWorkers,
       activePolicies,
       totalClaims,
+      claimsToday,
       totalPayout,
       totalPremiums,
       lossRatio,
+      fraudAlerts,
       claimsPerCity,
+      claimsByTrigger,
       weatherPatterns,
+      recentEvents,
     });
   } catch (err) {
     next(err);
   }
 };
-

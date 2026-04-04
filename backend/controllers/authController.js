@@ -3,6 +3,17 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import { calculateRiskScoreForUser } from "../services/riskEngine.js";
 
+// Zone mapping by city for auto-assignment
+const CITY_ZONES = {
+  Mumbai: "MUM-ANDHERI",
+  Delhi: "DEL-SAKET",
+  Bangalore: "BLR-KORMANGALA",
+  Chennai: "CHN-TNAGAR",
+  Hyderabad: "HYD-HITEC",
+  Kolkata: "KOL-PARK",
+  Pune: "PUN-BANER",
+};
+
 const generateToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET || "devsecret", {
     expiresIn: "7d",
@@ -10,8 +21,12 @@ const generateToken = (id) =>
 
 export const register = async (req, res, next) => {
   try {
-    const { name, email, password, platform, city, zone, avg_daily_income } =
+    const { name, email, password, platform, city, avg_daily_income } =
       req.body;
+
+    if (!name || !email || !platform || !city) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
 
     const existing = await User.findOne({ email });
     if (existing) {
@@ -19,6 +34,7 @@ export const register = async (req, res, next) => {
     }
 
     const passwordHash = await bcrypt.hash(password || "password123", 10);
+    const zone = CITY_ZONES[city] || `${city.slice(0, 3).toUpperCase()}-GENERAL`;
 
     const user = await User.create({
       name,
@@ -27,9 +43,10 @@ export const register = async (req, res, next) => {
       platform,
       city,
       zone,
-      avg_daily_income,
+      avg_daily_income: avg_daily_income || 500,
     });
 
+    // Calculate risk score via ML
     const risk_score = await calculateRiskScoreForUser(user);
     user.risk_score = risk_score;
     await user.save();
@@ -43,6 +60,7 @@ export const register = async (req, res, next) => {
       zone: user.zone,
       avg_daily_income: user.avg_daily_income,
       risk_score: user.risk_score,
+      role: user.role,
       token: generateToken(user._id),
     });
   } catch (err) {
@@ -72,11 +90,10 @@ export const login = async (req, res, next) => {
       zone: user.zone,
       avg_daily_income: user.avg_daily_income,
       risk_score: user.risk_score,
-      token: generateToken(user._id),
       role: user.role,
+      token: generateToken(user._id),
     });
   } catch (err) {
     next(err);
   }
 };
-

@@ -2,7 +2,7 @@ import axios from "axios";
 import RiskProfile from "../models/RiskProfile.js";
 
 const ML_SERVICE_URL =
-  process.env.ML_SERVICE_URL || "http://ml-service:8000/risk-score";
+  process.env.ML_SERVICE_URL || "http://localhost:8000";
 
 export const calculateRiskScoreForUser = async (user) => {
   try {
@@ -17,13 +17,31 @@ export const calculateRiskScoreForUser = async (user) => {
       flood_risk: zoneProfile ? zoneProfile.flood_risk : 0.3,
     };
 
-    const { data } = await axios.post(ML_SERVICE_URL, payload);
+    const { data } = await axios.post(`${ML_SERVICE_URL}/risk-score`, payload);
     return data.risk_score;
   } catch (err) {
-    console.error("Risk engine error", err.message);
-    const fallback =
-      (user.avg_daily_income / 1000) * (user.platform === "Amazon" ? 1.2 : 1);
-    return Math.max(10, Math.min(90, Math.round(fallback)));
+    console.error("Risk engine ML error, using fallback:", err.message);
+    // Deterministic fallback based on city risk tier
+    const cityRisk = {
+      Mumbai: 78,
+      Delhi: 72,
+      Bangalore: 58,
+      Chennai: 68,
+      Hyderabad: 55,
+      Kolkata: 65,
+      Pune: 52,
+    };
+    return cityRisk[user.city] || 50;
   }
 };
 
+export const getFraudScore = async (claimData) => {
+  try {
+    const { data } = await axios.post(`${ML_SERVICE_URL}/fraud-score`, claimData);
+    return data.fraud_score;
+  } catch (err) {
+    console.error("Fraud ML error, using fallback:", err.message);
+    // Rule-based fallback
+    return 0.1;
+  }
+};
